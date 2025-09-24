@@ -152,4 +152,4 @@ Este projeto é disponibilizado sob a licença MIT.
 ---
 
 **Desenvolvido por Ivan de França**  
-*Engenheiro de Dados | Especialista em Stream Processing*
+*Engenheiro de Dados 
