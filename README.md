@@ -1,31 +1,102 @@
 # Kafka Spark Streaming Pipeline
 
-Pipeline de processamento de dados em tempo real utilizando Apache Kafka e Spark Streaming para análise de dados IoT e atividade de usuários.
+<div align="center">
+  <img src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white" alt="Kafka">
+  <img src="https://img.shields.io/badge/Apache%20Spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white" alt="Spark">
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana">
+</div>
 
-## Arquitetura
+<div align="center">
+  <h3>Pipeline de Processamento de Dados em Tempo Real</h3>
+  <p><em>Arquitetura distribuída para análise de dados IoT e atividade de usuários</em></p>
+</div>
 
+---
+
+## Arquitetura do Sistema
+
+```mermaid
+graph LR
+    A[IoT Sensors] --> B[Kafka Topics]
+    C[User Events] --> B
+    B --> D[Spark Streaming]
+    D --> E[PostgreSQL]
+    E --> F[Grafana Dashboard]
+    
+    style A fill:#e1f5fe
+    style C fill:#e1f5fe
+    style B fill:#fff3e0
+    style D fill:#f3e5f5
+    style E fill:#e8f5e8
+    style F fill:#fff8e1
 ```
-IoT Sensors → Kafka → Spark Streaming → PostgreSQL → Grafana
-User Events → Kafka → Spark Streaming → PostgreSQL → Grafana
-```
+
+### Fluxo de Dados
+- **Ingestão**: Sensores IoT e eventos de usuários → Kafka
+- **Processamento**: Spark Streaming com agregações em tempo real
+- **Armazenamento**: PostgreSQL para persistência
+- **Visualização**: Dashboards interativos no Grafana
 
 ## Características Principais
 
-- **Processamento em Tempo Real**: Stream processing contínuo de dados
-- **Múltiplas Fontes de Dados**: Integração de sensores IoT e eventos de usuários
-- **Agregações Temporais**: Janelas de tempo com watermarks para análises
-- **Detecção de Anomalias**: Sistema de alertas em tempo real
-- **Visualização de Dados**: Dashboards interativos com Grafana
-- **Escalabilidade Horizontal**: Arquitetura distribuída com Kafka e Spark
+<table>
+<tr>
+<td width="50%">
+
+### **Processamento em Tempo Real**
+- Stream processing contínuo
+- Latência sub-segundo
+- Exactly-once processing
+
+### **Múltiplas Fontes**
+- Sensores IoT industriais
+- Eventos de usuários web
+- APIs externas (futuro)
+
+### **Agregações Temporais**
+- Janelas deslizantes
+- Watermarks para dados atrasados
+- Métricas estatísticas em tempo real
+
+</td>
+<td width="50%">
+
+### **Detecção de Anomalias**
+- Alertas automáticos
+- Thresholds configuráveis
+- Notificações em tempo real
+
+### **Visualização Avançada**
+- Dashboards interativos
+- Métricas em tempo real
+- Histórico de tendências
+
+### **Escalabilidade**
+- Arquitetura distribuída
+- Auto-scaling horizontal
+- Tolerância a falhas
+
+</td>
+</tr>
+</table>
 
 ## Stack Tecnológica
 
-- **Apache Kafka**: Message broker para streaming de dados
-- **Apache Spark**: Engine de processamento distribuído
-- **PostgreSQL**: Banco de dados para armazenamento persistente
-- **Grafana**: Plataforma de visualização e monitoramento
-- **Docker**: Containerização e orquestração de serviços
-- **Python**: Linguagem para produtores e consumidores
+<div align="center">
+
+| Categoria | Tecnologia | Versão | Função |
+|-----------|------------|--------|--------|
+| **Message Broker** | ![Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=flat&logo=apache-kafka&logoColor=white) | 2.8+ | Streaming de dados |
+| **Stream Processing** | ![Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat&logo=apache-spark&logoColor=white) | 3.4+ | Processamento distribuído |
+| **Database** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) | 13+ | Armazenamento persistente |
+| **Monitoring** | ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white) | 8.0+ | Visualização e dashboards |
+| **Containerization** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) | 20.10+ | Orquestração de serviços |
+| **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | 3.8+ | Produtores e consumidores |
+
+</div>
 
 ## Componentes do Sistema
 
@@ -145,11 +216,46 @@ docker-compose ps
 - **Containerization**: Orquestração com Docker Compose
 - **Observability**: Monitoramento e visualização de métricas
 
+
+## Métricas do Projeto
+
+<div align="center">
+
+![GitHub repo size](https://img.shields.io/github/repo-size/01001102/kafka-spark-streaming-pipeline?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/01001102/kafka-spark-streaming-pipeline?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/01001102/kafka-spark-streaming-pipeline?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/01001102/kafka-spark-streaming-pipeline?style=for-the-badge)
+
+</div>
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para:
+
+- Reportar bugs
+- Sugerir novas funcionalidades
+- Enviar pull requests
+- Dar uma estrela se gostou do projeto
+
 ## Licença
 
-Este projeto é disponibilizado sob a licença MIT.
+Este projeto está licenciado sob a [Licença MIT](LICENSE) - veja o arquivo LICENSE para detalhes.
+
+## Contato
+
+<div align="center">
+
+**Ivan de França**  
+*Engenheiro de Dados | Especialista em Stream Processing*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/01001102)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seu-email@exemplo.com)
+
+</div>
 
 ---
 
-**Desenvolvido por Ivan de França**  
-*Engenheiro de Dados 
+<div align="center">
+  <sub>Construído para demonstrar expertise em Data Engineering</sub>
+</div> 
