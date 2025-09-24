@@ -1,62 +1,62 @@
-# Kafka + Spark Streaming Pipeline
+# Kafka Spark Streaming Pipeline
 
-Pipeline de dados em tempo real usando Apache Kafka e Spark Streaming para processamento de dados IoT e atividade de usuários.
+Pipeline de processamento de dados em tempo real utilizando Apache Kafka e Spark Streaming para análise de dados IoT e atividade de usuários.
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 IoT Sensors → Kafka → Spark Streaming → PostgreSQL → Grafana
 User Events → Kafka → Spark Streaming → PostgreSQL → Grafana
 ```
 
-## 🚀 Características
+## Características Principais
 
-- **Streaming em Tempo Real**: Processamento contínuo de dados
-- **Múltiplas Fontes**: Sensores IoT + Atividade de usuários
-- **Agregações**: Janelas de tempo com watermarks
-- **Alertas**: Detecção de anomalias em tempo real
-- **Visualização**: Dashboards no Grafana
-- **Escalabilidade**: Kafka particionado + Spark distribuído
+- **Processamento em Tempo Real**: Stream processing contínuo de dados
+- **Múltiplas Fontes de Dados**: Integração de sensores IoT e eventos de usuários
+- **Agregações Temporais**: Janelas de tempo com watermarks para análises
+- **Detecção de Anomalias**: Sistema de alertas em tempo real
+- **Visualização de Dados**: Dashboards interativos com Grafana
+- **Escalabilidade Horizontal**: Arquitetura distribuída com Kafka e Spark
 
-## 🛠️ Stack Tecnológica
+## Stack Tecnológica
 
-- **Apache Kafka**: Message broker para streaming
-- **Apache Spark**: Processamento distribuído
-- **PostgreSQL**: Armazenamento de dados processados
-- **Grafana**: Visualização e dashboards
-- **Docker**: Containerização completa
-- **Python**: Produtores e consumidores
+- **Apache Kafka**: Message broker para streaming de dados
+- **Apache Spark**: Engine de processamento distribuído
+- **PostgreSQL**: Banco de dados para armazenamento persistente
+- **Grafana**: Plataforma de visualização e monitoramento
+- **Docker**: Containerização e orquestração de serviços
+- **Python**: Linguagem para produtores e consumidores
 
-## 📦 Componentes
+## Componentes do Sistema
 
-### Produtores de Dados
-- **IoT Data Generator**: Simula sensores (temperatura, umidade, pressão)
-- **User Activity Generator**: Simula atividade web (login, compras, navegação)
+### Geradores de Dados
+- **IoT Data Generator**: Simulação de sensores industriais (temperatura, umidade, pressão atmosférica)
+- **User Activity Generator**: Simulação de eventos de usuários web (autenticação, navegação, transações)
 
-### Processamento Spark
-- **Real-time Processing**: Transformações em tempo real
-- **Windowed Aggregations**: Métricas por janelas de tempo
-- **Alerting**: Detecção de temperaturas altas e bateria baixa
-- **Data Enrichment**: Conversões e categorizações
+### Engine de Processamento
+- **Transformações em Tempo Real**: Enriquecimento e limpeza de dados
+- **Agregações por Janela**: Cálculo de métricas estatísticas temporais
+- **Sistema de Alertas**: Detecção automática de anomalias e condições críticas
+- **Enriquecimento de Dados**: Categorização e conversões de unidades
 
-### Armazenamento
-- **PostgreSQL**: Dados processados e agregações
-- **Checkpointing**: Garantia de exactly-once processing
+### Camada de Persistência
+- **PostgreSQL**: Armazenamento de dados processados e métricas agregadas
+- **Checkpointing**: Garantia de processamento exactly-once com tolerância a falhas
 
-## 🚀 Como Executar
+## Guia de Execução
 
-### 1. Iniciar Infraestrutura
+### 1. Inicialização da Infraestrutura
 ```bash
-# Subir todos os serviços
+# Inicializar todos os serviços containerizados
 docker-compose up -d
 
-# Aguardar inicialização (2-3 minutos)
+# Monitorar logs de inicialização
 docker-compose logs -f
 ```
 
-### 2. Configurar Ambiente
+### 2. Configuração do Ambiente
 ```bash
-# Executar setup
+# Executar script de configuração inicial
 chmod +x setup.sh
 ./setup.sh
 
@@ -64,82 +64,92 @@ chmod +x setup.sh
 pip install -r requirements.txt
 ```
 
-### 3. Iniciar Pipeline
+### 3. Execução do Pipeline
 ```bash
-# Terminal 1: Gerar dados
+# Terminal 1: Iniciar gerador de dados
 python producers/iot_data_generator.py
 
-# Terminal 2: Processar com Spark
+# Terminal 2: Iniciar processador Spark
 python consumers/spark_streaming_processor.py
 ```
 
-## 📊 Monitoramento
+## Monitoramento e Observabilidade
 
-### URLs de Acesso
+### Interfaces de Monitoramento
 - **Spark Master UI**: http://localhost:8080
-- **Grafana**: http://localhost:3000 (admin/admin)
+- **Grafana Dashboard**: http://localhost:3000 (admin/admin)
 - **PostgreSQL**: localhost:5432 (postgres/postgres)
 
-### Métricas Disponíveis
-- Temperatura média por localização
-- Alertas de temperatura alta
-- Status de bateria dos sensores
-- Atividade de usuários por browser
-- Duração de sessões
+### Métricas e KPIs
+- Métricas agregadas de temperatura por localização
+- Alertas de condições críticas de temperatura
+- Monitoramento de status de bateria dos dispositivos
+- Análise de comportamento de usuários por navegador
+- Métricas de duração e qualidade de sessões
 
-## 🔧 Configurações
+## Configurações do Sistema
 
-### Kafka Topics
-- `iot_sensors`: Dados de sensores IoT
-- `user_activity`: Atividade de usuários
+### Tópicos Kafka
+- `iot_sensors`: Stream de dados de sensores IoT
+- `user_activity`: Stream de eventos de atividade de usuários
 
-### Spark Streaming
-- **Batch Interval**: 5 segundos
-- **Watermark**: 10 minutos
-- **Window Size**: 5 minutos
-- **Checkpoint**: Habilitado para fault tolerance
+### Parâmetros Spark Streaming
+- **Intervalo de Batch**: 5 segundos
+- **Watermark**: 10 minutos para dados atrasados
+- **Tamanho da Janela**: 5 minutos para agregações
+- **Checkpointing**: Habilitado para tolerância a falhas
 
-### Alertas Configurados
-- 🌡️ **Temperatura Alta**: > 30°C
-- 🔋 **Bateria Baixa**: < 20%
-- ⏱️ **Sessão Longa**: > 5 minutos
+### Critérios de Alerta
+- **Temperatura Crítica**: Acima de 30°C
+- **Bateria Baixa**: Abaixo de 20%
+- **Sessão Prolongada**: Superior a 5 minutos
 
-## 📈 Casos de Uso
+## Casos de Uso
 
-1. **Monitoramento IoT**: Sensores industriais em tempo real
-2. **Analytics Web**: Comportamento de usuários
-3. **Detecção de Anomalias**: Alertas automáticos
-4. **Dashboards Executivos**: KPIs em tempo real
+1. **Monitoramento Industrial**: Supervisão de sensores em tempo real
+2. **Analytics Comportamental**: Análise de padrões de usuários
+3. **Detecção Proativa**: Sistema de alertas para anomalias
+4. **Business Intelligence**: Dashboards executivos com KPIs
 
-## 🧪 Testes
+## Validação e Testes
 
 ```bash
-# Verificar tópicos Kafka
+# Verificar tópicos Kafka disponíveis
 docker exec kafka kafka-topics --list --bootstrap-server localhost:9092
 
-# Verificar dados no PostgreSQL
+# Validar dados armazenados no PostgreSQL
 docker exec -it postgres psql -U postgres -d streaming_data -c "SELECT COUNT(*) FROM sensor_data;"
 
-# Monitorar logs Spark
+# Monitorar logs do Spark Master
 docker logs spark-master
+
+# Verificar status dos containers
+docker-compose ps
 ```
 
-## 🔄 Próximos Passos
+## Roadmap de Desenvolvimento
 
-- [ ] Implementar Schema Registry
-- [ ] Adicionar Kafka Connect
-- [ ] Criar alertas no Grafana
-- [ ] Implementar ML para detecção de anomalias
-- [ ] Adicionar testes unitários
+- [ ] Implementação de Schema Registry para versionamento
+- [ ] Integração com Kafka Connect para fontes externas
+- [ ] Configuração de alertas avançados no Grafana
+- [ ] Desenvolvimento de modelos ML para detecção de anomalias
+- [ ] Implementação de testes unitários e de integração
+- [ ] Otimização de performance e tuning de parâmetros
 
-## 📚 Tecnologias Demonstradas
+## Tecnologias e Conceitos Demonstrados
 
-- **Stream Processing**: Kafka + Spark Streaming
-- **Real-time Analytics**: Agregações com janelas
-- **Data Engineering**: ETL em tempo real
-- **DevOps**: Docker + containerização
-- **Monitoring**: Grafana + métricas
+- **Stream Processing**: Processamento de dados em tempo real
+- **Event-Driven Architecture**: Arquitetura orientada a eventos
+- **Real-time Analytics**: Análises e agregações temporais
+- **Data Engineering**: Pipeline ETL para big data
+- **Containerization**: Orquestração com Docker Compose
+- **Observability**: Monitoramento e visualização de métricas
+
+## Licença
+
+Este projeto é disponibilizado sob a licença MIT.
 
 ---
 
-Desenvolvido por Ivan de França
+**Desenvolvido por Ivan de França**  
+*Engenheiro de Dados | Especialista em Stream Processing*
