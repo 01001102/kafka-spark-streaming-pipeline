@@ -246,16 +246,4 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE) - veja o arquivo LIC
 <div align="center">
 
 **Ivan de França**  
-*Engenheiro de Dados | Especialista em Stream Processing*
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/01001102)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seu-email@exemplo.com)
-
-</div>
-
----
-
-<div align="center">
-  <sub>Construído para demonstrar expertise em Data Engineering</sub>
-</div> 
+Engenheiro de Dados 
